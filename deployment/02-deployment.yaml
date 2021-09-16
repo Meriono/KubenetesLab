@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-deployment
+  namespace: kubeapp
+  labels:
+    app: kube
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kube
+  template:
+    metadata:
+      labels:
+        app: kube
+    spec:
+      containers:
+        - name: kube
+          image: meriono/kubenetes_lab:0.0.1
+          imagePullPolicy: IfNotPresent
